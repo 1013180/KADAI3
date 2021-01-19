@@ -1,6 +1,17 @@
+<!--< @books.each do |post_image| %>-->
+<!--<div>-->
+<!--  <= link_to book_path(book.id) do %>-->
+<!--  <= attachment_image_tag books, :image %>-->
+<!--  < end %>-->
+<!--  <p>Title：<= post_image.Title %></p>-->
+<!--  <p>Opinion：<= post_image.body %></p>-->
+<!--</div>-->
+<!--< end %>-->
 <!DOCTYPE html>
 <html>
+
  <body>
+<header>
 <header>
 </header>
 <main>
@@ -8,13 +19,11 @@
   <p>you can share and exchange  your opinions , inpressions , and emotions</p>
   <p> about various books!</p>
 
-  <%= link_to " logout", destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete %>
-
-  <br><%= link_to "Sign Up", new_user_registration_path %></br>
    </main>
     <footer>
       <p>CopyRight Infratop.inc</p>
   </footer>
   </body>
   </html>
+
 

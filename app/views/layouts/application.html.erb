@@ -7,6 +7,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <% if user_signed_in? %>
+      <li>
+        <!--<= link_to 'Home', top_book_path %>-->
+      </li>
+      <li>
+        <!--<= link_to "About", user_session_path, method %>-->
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "login", new_user_session_path %>
+      </li>
+    <% end %>
   </head>
 
   <body>
