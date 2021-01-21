@@ -39,16 +39,14 @@
 <%= @book.title %>
 <%= @book.body %>
 <table>
-<thead>
-<tr>
-<th>title</th>
-<th>body</th>
-<th></th>
-</tr>
-</thead>
 
 <tbody>
 <tr>
+<td>
+<%= attachment_image_tag @book.user, :profile_image %>
+<%= link_to "#{@book.user.name}", user_path(@user.id) %>
+</td>
+
 <td>
 <%= @book.title %>
 </td>

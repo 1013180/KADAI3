@@ -45,26 +45,24 @@
 <table>
 <thead>
 <tr>
-<th>title</th>
-<th>body</th>
+<th>image</th>
+<th>name</th>
 <th></th>
 </tr>
 </thead>
 
 <tbody>
-<% @books.each do |book| %>
+<% @users.each do |user| %>
 <tr>
 <td>
-<%= link_to book.title, book_path(book.id) %>
+<%= user.profile_image %>
 </td>
 <td>
-<%= book.body %>
+<%= user.name %>
 </td>
-
-
-
-<% end %>
+<td>
+<%= link_to "show", user_path(user.id) %>
+</td>
 </tr>
+<% end %>
 </tbody>
-</table>
-</div>
