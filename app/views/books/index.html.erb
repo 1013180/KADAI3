@@ -12,11 +12,10 @@
     <!--< if @user.id == current_user.id %>-->
     <!--<p><= link_to "プロフィール編集", edit_user_path(@user) %></p>-->
   <!--< end %>-->
-</div>
+
 
 
 <div>
-
     <%= attachment_image_tag @user, :profile_image %>
 
   <!--<p>投稿ユーザー画像：<= image_tag %></p>-->
@@ -42,8 +41,7 @@
 <% end %>
 
 <h2>Books</h2>
-<% @books.each do |book| %>
-<% end %>
+
 <table>
 <thead>
 <tr>
@@ -52,3 +50,18 @@
 <th></th>
 </tr>
 </thead>
+
+<tbody>
+<% @books.each do |book| %>
+<tr>
+<td>
+<%= book.title %>
+</td>
+<td>
+<%= book.body %>
+</td>
+
+
+</tr>
+<% end %>
+</tbody>
