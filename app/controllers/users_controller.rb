@@ -7,6 +7,12 @@ class UsersController < ApplicationController
     @user.user_id = current_user.id
     @user.save
     redirect_to users_path
+     if @user.save
+      flash[:notice] = "successfully"
+      redirect_to users_path
+     else
+      render("users/new")
+     end
    end
 
   def show
@@ -25,6 +31,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
      if @user.save
+      flash[:notice] = "successfully"
       redirect_to user_path(@user.id)
      else
       render :edit

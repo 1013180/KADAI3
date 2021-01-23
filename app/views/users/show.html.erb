@@ -1,4 +1,10 @@
  <h2>User info</h2>
+ 　<p><%= flash[:notice] %></p>
+    <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+   <% end %>
    <%= form_with model:@user, local:true do |f| %>
    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
     <table>

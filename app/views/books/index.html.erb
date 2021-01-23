@@ -43,7 +43,9 @@
 <% end %>
 </td>
 <td>
-<%= link_to "#{book.title}", book_path(book.id) %>
+<%= link_to edit_book_path(book.id) do %>
+<%= book.title %>
+<% end %>
 </td>
 <td>
 <%= book.body %>
