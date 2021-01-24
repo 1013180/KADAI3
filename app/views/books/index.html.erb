@@ -1,30 +1,41 @@
- <h2>User info</h2>
 
-   <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-    <table>
+  <div class="row">
 
-    <tr><th><label for="inputName">Name</label></th><td>
-    <%= @user.name %>
+    <div class="col-2">
+       <h2>User info</h2>
+       <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+        <table class="table table-striped">
 
-   <tr><th><label for="inputIntroduction">introduction</label></th><td>
-   <%= @user.introduction %>
+    <tr>
+    <th><label for="inputName">Name</label></th>
+   <!--<= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name"%></td></tr>-->
+     <th><%=@user.name %>
+     </th></tr>
+   <tr><th><label for="inputIntroduction">introduction</label></th>
+   <!--<= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:""%></td></tr>-->
+     <th><%=@user.introduction %>
+     </th></tr>
 
-</table>
+    </table>
+        <%=link_to edit_user_path(@user.id) do %>
+　　　　<a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_14861">edit</a>
+　　　　<% end %>
+      <%=link_to "edit", edit_user_path(@user.id), class: "btn btn-secondary" %>
+    <br></br>
 
-  <%=link_to "edit", edit_user_path(@user.id) %>
-
-<h2>New book</h>
-<%= form_with model: @book, local: true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_field :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
-
+    <h2>New book</h>
+    <%= form_with model: @book, local: true do |f| %>
+      <h4>Title</h4>
+      <%= f.text_field :title %>
+      <h4>Opinion</h4>
+      <%= f.text_field :body %>
+      <%= f.submit 'Create Book' %>
+    <% end %>
+    </div>
+<div class="col-8 offset-md-2">
 <h2>Books</h2>
 
-<table>
+<table class="table">
 <thead>
 <tr>
 <th></th>
@@ -58,3 +69,7 @@
 </tbody>
 </table>
 </div>
+  </div>  <!-- この行を追加 -->
+</div>
+   </div>  <!-- この行を追加 -->
+    </div>

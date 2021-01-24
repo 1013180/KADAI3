@@ -1,18 +1,25 @@
+ <div class="row">
+
+    <div class="col-2">
  <h2>User info</h2>
  　<p><%= flash[:notice] %></p>
    <%= form_with model:@user, local:true do |f| %>
    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-    <table>
+    <table class="table table-striped">
 
-    <tr><th><label for="inputName">Name</label></th><td>
-   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name"%></td></tr>
-
-   <tr><th><label for="inputIntroduction">introduction</label></th><td>
-   <%= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:""%></td></tr>
+    <tr>
+    <th><label for="inputName">Name</label></th>
+   <!--<= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name"%></td></tr>-->
+     <th><%=@user.name %>
+     </th></tr>
+   <tr><th><label for="inputIntroduction">introduction</label></th>
+   <!--<= f.text_field :introduction, autofocus: true, id:"inputIntroduction", placeholder:""%></td></tr>-->
+     <th><%=@user.introduction %>
+     </th></tr>
 
 </table>
 
-  <%=link_to "edit", edit_user_path(@user.id) %>
+  <%=link_to "edit", edit_user_path(@user.id), class: "btn btn-secondary" %>
 
 <% end %>
 
@@ -26,16 +33,25 @@
   <%= f.text_field :body %>
   <%= f.submit 'Create Book' %>
 <% end %>
-
+</div>
+<div class="col-8 offset-md-2">
 <h2>Book detail</h2>
+
+<table class="table">
+
 <table>
 <tr><th><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th><td>
 </th><td><%= @book.title %></th><td>
 </th><td><%= @book.body %></th><td>
-</th><td><%= link_to "edit", edit_book_path(@book.id) %></th><td>
-</th><td><%= link_to "destroy", book_path(@book.id), method: :delete, data: { confirm: 'Are you sure?'}  %></th><td>
+<% if user_signed_in? && @book.user==current_user %>
+</th><td><%= link_to "Edit", edit_book_path(@book.id) %></th><td>
+</th><td><%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: 'Are you sure?'}  %></th><td>
 <tr><th><%= link_to "#{@book.user.name}", user_path(@user.id) %></th><td>
+    <% end %>
 </table>
-
+  </div>  <!-- この行を追加 -->
+</div>
+   </div>  <!-- この行を追加 -->
+    </div>
 
 
