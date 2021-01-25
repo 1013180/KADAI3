@@ -1,10 +1,16 @@
  <div class="row">
-
-    <div class="col-2">
+    <div class="col-md-3">
  <h2>User info</h2>
+     <% if @book.errors.any? %>
+        <%= @book.errors.count %>error prohibited this obj from being saved:
+        <% @book.errors.full_messages.each do |message| %>
+        <%= message %>
+         <% end %>
+        <% end %>
  　<p><%= flash[:notice] %></p>
    <%= form_with model:@user, local:true do |f| %>
    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+   <% end %>
     <table class="table table-striped">
 
     <tr>
@@ -19,34 +25,35 @@
 
 </table>
 
-  <%=link_to "edit", edit_user_path(@user.id), class: "btn btn-secondary" %>
 
-<% end %>
+     <%= link_to "", edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
 
+<div class="row">
 <h2>New book</h>
 <%= form_with model: @book_new, local: true do |f| %>
 
   <!--<= f.attachment_field :image %>-->
-  <p>Title<p>
-  <%= f.text_field :title %>
-  <p>Opinion<p>
-  <%= f.text_field :body %>
-  <%= f.submit 'Create Book' %>
+  Title
+  <br><%= f.text_field :title %></br>
+  Opinion
+  <br><%= f.text_field :body %></br>
+  <br><%= f.submit 'Create Book' %></br>
 <% end %>
 </div>
-<div class="col-8 offset-md-2">
+</div>
+<div class="col-md-8 offset-md-1">
 <h2>Book detail</h2>
 
 <table class="table">
 
 <table>
-<tr><th><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th><td>
-</th><td><%= @book.title %></th><td>
+<tr><th><%= link_to attachment_image_tag(@book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"),user_path(@user.id) %></th><td>
+    <tr><th><%= link_to "#{@book.user.name}", user_path(@user.id) %></th><td>
+</th><td><%= link_to @book.title, book_path(@book.id) %></th><td>
 </th><td><%= @book.body %></th><td>
-<% if user_signed_in? && @book.user==current_user %>
+<% if @book.user==current_user %>
 </th><td><%= link_to "Edit", edit_book_path(@book.id) %></th><td>
 </th><td><%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: 'Are you sure?'}  %></th><td>
-<tr><th><%= link_to "#{@book.user.name}", user_path(@user.id) %></th><td>
     <% end %>
 </table>
   </div>  <!-- この行を追加 -->

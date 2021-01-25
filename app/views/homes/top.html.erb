@@ -2,6 +2,11 @@
 <html>
  <body>
 <main>
+ 　   <% if flash[:notice] %>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+   <% end %>
   <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong>  !!</h1>
   In <i class="fas fa-book"></i><strong>Bookers,</strong>
   <p>you can share and exchange  your opinions , inpressions , and emotions</p>

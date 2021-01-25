@@ -1,22 +1,23 @@
  <h2>User info</h2>
    <% if @user.errors.any? %>
-  <%= @user.errors.count %>errors prohibited this obj from being saved:
+  <%= @user.errors.count %>error prohibited this obj from being saved:
   <% @user.errors.full_messages.each do |message| %>
     <%= message %>
   <% end %>
 <% end %>
  <table>
-  <tr><th>
+  <tr>
    <%= form_with model:@user, local:true do |f| %>
-    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th><td>
-    <tr><th> <label for="inputName">Name</label></th><td>
-    <tr><th> <%= f.text_field :name %></th><td>
-    <tr><th> <label for="inputIntroduction">introduction</label></th><td>
-    <tr><th> <%= f.text_field :introduction %></th><td>
-    <tr><th> <label for="inputImage"></label></th><td>
-    <tr><th> <%= f.attachment_field :profile_image %></th><td>
-    <tr><th><%= f.submit "Update User" %></td></tr>
+    <th><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
+    <tr><th> <label for="inputName">Name</label></th><tr>
+    <tr><th> <%= f.text_field :name %></th><tr>
+    <tr><th> <label for="inputIntroduction">introduction</label></th><tr>
+    <tr><th> <%= f.text_field :introduction %></th><tr>
+    <tr><th> <label for="inputImage"></label></th><tr>
+    <tr><th> <%= f.attachment_field :profile_image %></th><tr>
+    <tr><th><%= f.submit "Update User" %></th></tr>
    <% end %>
+  </tr>
 </table>
 
 
